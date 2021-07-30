@@ -34,19 +34,14 @@ exports.getScheduleView = catchAsync(async (req, res, next) => {
   if (!req.query.day) req.query.day = 1;
   const filt = {
     day: req.query.day,
-    sesi: 'A',
   };
   // let filter = {};
-  const schedulesA = await Schedule.find(filt);
-
-  filt.sesi = 'B';
-  const schedulesB = await Schedule.find(filt);
-
+  const schedules = await Schedule.find(filt);
+  console.log(schedules.length);
   res.status(200).render('main/schedules', {
-    schedulesA,
-    schedulesB,
+    schedules,
     active: req.query.day,
-    day: schedulesA.length,
+    day: schedules.length * 2 - 1,
   });
 });
 

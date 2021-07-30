@@ -59,13 +59,13 @@ const teamSchema = mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       ref: 'Player',
     },
-    divisi: {
-      type: String,
-      enum: {
-        values: ['satu', 'dua'],
-        message: '1 atau 2',
-      },
-    },
+    // divisi: {
+    //   type: String,
+    //   enum: {
+    //     values: ['satu', 'dua'],
+    //     message: '1 atau 2',
+    //   },
+    // },
     achievement: String,
     // motto: String,
     // cp: String,

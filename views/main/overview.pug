@@ -3,7 +3,7 @@ extends base
 block jumbotron  
   header
     .jumbotron
-      h1.mb-3 H2O League - From Community to community
+      h1.mb-3 MGPL S3 - Divisi 1
       p.mb-3 show us the best team in magic chess
       ul.jumbo-list
         li.mb-3
@@ -68,6 +68,50 @@ block content
                       img.img-fluid(src=`/img/teams/${schedules[i].t2.logo}` width='50' height='50' alt='')
                     td=`${schedules[i].startDate.toLocaleString('id', {hour: 'numeric', minute: 'numeric'})} WIB`
           a(href='/schedule') klik untuk melihat jadwal dan hasil selengkapnya
+        hr.my-4
+      .row.text-center.align-items-center.mt-4
+        .col-md-6
+          h2 Live Streaming 
+          #carouselExampleIndicators.carousel.slide(data-bs-ride='carousel')
+            .carousel-indicators
+              button.active(type='button', data-bs-target='#carouselExampleIndicators', data-bs-slide-to='0', aria-current='true', aria-label='Slide 1')
+              button(type='button', data-bs-target='#carouselExampleIndicators', data-bs-slide-to='1', aria-label='Slide 2')
+              button(type='button', data-bs-target='#carouselExampleIndicators', data-bs-slide-to='2', aria-label='Slide 3')
+            .carousel-inner
+              .carousel-item.active
+                img.d-block.w-100(src='/img/jumbotron1.jpg', alt='...')
+              .carousel-item
+                img.d-block.w-100(src='/img/jumbotron1.jpg', alt='...')
+              .carousel-item
+                img.d-block.w-100(src='/img/jumbotron1.jpg', alt='...')
+            button.carousel-control-prev(type='button', data-bs-target='#carouselExampleIndicators', data-bs-slide='prev')
+              span.carousel-control-prev-icon(aria-hidden='true')
+              span.visually-hidden Previous
+            button.carousel-control-next(type='button', data-bs-target='#carouselExampleIndicators', data-bs-slide='next')
+              span.carousel-control-next-icon(aria-hidden='true')
+              span.visually-hidden Next
+          a(href='#') Hubungi kami jika ingin bergabung menjadi streamer
+        .col-md-6
+          h2 News Update 
+          #carouselExampleIndicators.carousel.slide(data-bs-ride='carousel')
+            .carousel-indicators
+              button.active(type='button', data-bs-target='#carouselExampleIndicators', data-bs-slide-to='0', aria-current='true', aria-label='Slide 1')
+              button(type='button', data-bs-target='#carouselExampleIndicators', data-bs-slide-to='1', aria-label='Slide 2')
+              button(type='button', data-bs-target='#carouselExampleIndicators', data-bs-slide-to='2', aria-label='Slide 3')
+            .carousel-inner
+              .carousel-item.active
+                img.d-block.w-100(src='/img/jumbotron1.jpg', alt='...')
+              .carousel-item
+                img.d-block.w-100(src='/img/jumbotron1.jpg', alt='...')
+              .carousel-item
+                img.d-block.w-100(src='/img/jumbotron1.jpg', alt='...')
+            button.carousel-control-prev(type='button', data-bs-target='#carouselExampleIndicators', data-bs-slide='prev')
+              span.carousel-control-prev-icon(aria-hidden='true')
+              span.visually-hidden Previous
+            button.carousel-control-next(type='button', data-bs-target='#carouselExampleIndicators', data-bs-slide='next')
+              span.carousel-control-next-icon(aria-hidden='true')
+              span.visually-hidden Next
+          br.my5
       //- hr
       //- .row.justify-content-center
       //-   .col-md-6.text-center  

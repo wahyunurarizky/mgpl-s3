@@ -69,19 +69,16 @@ exports.start = catchAsync(async (req, res, next) => {
   await Schedule.deleteMany();
   const teams = await Team.find();
   const start = new Date(req.body.dateStart).getTime();
-  let sesi = 'A';
   let day = 1;
   let startDate = start;
   for (let i = 1; i < teams.length; i++) {
-    if (new Date(startDate).getDay() == 6) startDate += 86400000 * 2;
+    if (new Date(startDate).getDay() == 0) startDate += 86400000;
 
     await Schedule.create({
       day,
-      sesi,
       t1: teams[0].id,
       t2: teams[i].id,
       startDate,
-      divisi: 'satu',
     });
     for (let j = 1; j < teams.length / 2; j++) {
       let a = teams.length - j - 1 + i;
@@ -92,25 +89,30 @@ exports.start = catchAsync(async (req, res, next) => {
 
       await Schedule.create({
         day,
-        sesi,
         t1: teams[a].id,
         t2: teams[b].id,
         startDate,
-        divisi: 'satu',
       });
     }
-    if (i % 2 != 0) {
-      if (i == 1) {
-        startDate += 86400000;
-      } else {
-        startDate += 81000000;
-      }
-      day++;
-      sesi = 'A';
+
+    if (day === 9) {
+      startDate += 86400000 * 7;
     } else {
-      startDate += 5400000;
-      sesi = 'B';
+      startDate += 86400000 * 2;
     }
+    day++;
+    // if (i % 2 != 0) {
+    //   if (i == 1) {
+    //     startDate += 86400000;
+    //   } else {
+    //     startDate += 81000000;
+    //   }
+    //   day++;
+    //   sesi = 'A';
+    // } else {
+    //   startDate += 5400000;
+    //   sesi = 'B';
+    // }
   }
   res.status(200).redirect('/panel-admin/manage-schedule');
 });

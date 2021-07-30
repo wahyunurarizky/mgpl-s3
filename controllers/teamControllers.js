@@ -38,9 +38,9 @@ exports.createTeam = catchAsync(async (req, res, next) => {
     'name',
     'shortName',
     'achievement',
-    'description',
-    'divisi'
+    'description'
   );
+
   if (req.file) filteredBody.logo = req.file.filename;
   const team = await Team.create(filteredBody);
   res.status(201).json({

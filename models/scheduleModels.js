@@ -11,7 +11,6 @@ const scheduleSchema = mongoose.Schema({
     type: mongoose.Schema.ObjectId,
     ref: 'Team',
   },
-  sesi: String,
   startDate: Date,
   win: {
     type: mongoose.Schema.ObjectId,

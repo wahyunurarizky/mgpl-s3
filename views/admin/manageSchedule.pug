@@ -4,15 +4,9 @@ block content
   main.col-md-9.ms-sm-auto.col-lg-10.px-md-4
     .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pt-3.pb-2.mb-3.border-bottom
       h1.h2 Schedule Management
-    button.mb-3.btn.btn-primary(type='button' data-bs-toggle='modal' data-bs-target='#modalResult')
-      | Create new team
     .row
       .col.text-center
         table.table.table-striped.align-middle
-          thead
-            tr
-              th.text-dark.text-center(scope='col' colspan='10')
-                | DIVISI A
           tbody
             each schedule in schedules  
               if schedule.finish
