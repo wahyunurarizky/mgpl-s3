@@ -1,0 +1,31 @@
+extends base
+
+block content
+  section#isi
+    .container
+      .row.my-4
+        .col
+          h2.text-center TOP MVP H2O League 
+      .row.pb-4  
+        .col-8.col-md-9       
+          table.table.table-striped.align-middle.text-center
+            thead
+              tr
+                th(scope='col') #
+                th(scope='col') 
+                th(scope='col') nickname
+                th(scope='col') Total Mvp
+                
+            tbody
+              each player,i in players
+                tr
+                  th(scope='row')= `${i+1}`
+                  td
+                    img(src=`/img/teams/${player.team.logo}` width='50')
+                  td=player.nick
+                  td=player.mvp
+        .col-4.col-md-3
+          .card(style={'position': 'sticky', 'top': '80px'})
+            img.card-img-top(src=`/img/players/${players[0].photo}` alt='...')
+            .card-body.text-center
+              p.card-text=players[0].nick

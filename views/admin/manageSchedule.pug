@@ -1,0 +1,99 @@
+extends base
+
+block content
+  main.col-md-9.ms-sm-auto.col-lg-10.px-md-4
+    .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pt-3.pb-2.mb-3.border-bottom
+      h1.h2 Schedule Management
+    button.mb-3.btn.btn-primary(type='button' data-bs-toggle='modal' data-bs-target='#modalResult')
+      | Create new team
+    .row
+      .col.text-center
+        table.table.table-striped.align-middle
+          thead
+            tr
+              th.text-dark.text-center(scope='col' colspan='10')
+                | DIVISI A
+          tbody
+            each schedule in schedules  
+              if schedule.finish
+                tr
+                  td
+                    img.img-fluid(src=`/img/teams/${schedule.t1.logo}` width='50' height='50' alt='')
+                  td  
+                    a.text-decoration-none.text-dark(href=`/teams/${schedule.t1.slug}`)=schedule.t1.shortName
+                  if (schedule.lose == schedule.t1.id)
+                    td.fw-bold=`${schedule.score == 'full' ? '0': '1'}`
+                  else 
+                    td.fw-bold 2
+                  td vs
+                  if (schedule.lose == schedule.t2.id)
+                    td.fw-bold=`${schedule.score == 'full' ? '0': '1'}`
+                  else 
+                    td.fw-bold 2
+                  td
+                    a.text-decoration-none.text-dark(href=`/teams/${schedule.t2.slug}`)=schedule.t2.shortName
+                  td
+                    img.img-fluid(src=`/img/teams/${schedule.t2.logo}` width='50' height='50' alt='')
+                  td 
+                    a.button-add-result(href='#' data-bs-toggle="modal" data-bs-target="#modalResult" data-id=`${schedule.id}`)
+                      span.badge.bg-warning.fw-lighter.text-dark.me-2 add result
+              else
+                tr
+                  td
+                    img.img-fluid(src=`/img/teams/${schedule.t1.logo}` width='50' height='50' alt='')
+                  td  
+                    a.text-decoration-none.text-dark(href=`/teams/${schedule.t1.slug}`)=schedule.t1.shortName
+                  td.fw-bold -
+                  td vs
+                  td.fw-bold -
+                  td
+                    a.text-decoration-none.text-dark(href=`/teams/${schedule.t2.slug}`)=schedule.t2.shortName
+                  td
+                    img.img-fluid(src=`/img/teams/${schedule.t2.logo}` width='50' height='50' alt='')
+                  td 
+                    a.button-add-result(href='#' data-bs-toggle="modal" data-bs-target="#modalResult" data-id=`${schedule.id}`)
+                      span.badge.bg-warning.fw-lighter.text-dark.me-2 add result
+
+    #modalResult.modal.fade(tabindex='-1' aria-labelledby='modalResultLabel' aria-hidden='true')
+      .modal-dialog.modal-dialog-scrollable
+        .modal-content
+          .modal-header
+            h5#modalResultLabel.modal-title Add Result
+            button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+          .modal-body
+            form.form--addResult#formaddresult
+              input#resultId(type="hidden")
+              input#team1(type="hidden")
+              input#team2(type="hidden")
+              .mb-3
+                label.form-label(for='winner') Winner
+                select#winner.form-select(aria-label='Default select example')
+              .mb-3
+                label.form-label(for='score') Score
+                select#score.form-select(aria-label='Default select example')
+                  option(selected) Select score
+                  option(value='full') 2-0
+                  option(value='half') 2-1
+              .row 
+                .col-6
+                  .mb-3
+                    label.form-label(for='totalWinTimMenang') poin tim win
+                    input#totalWinTimMenang.form-control(type='number' autocomplete="off")
+                .col-6
+                  .mb-3
+                    label.form-label(for='totalWinTimKalah') poin tim lose
+                    input#totalWinTimKalah.form-control(type='number' autocomplete="off")
+              .mb-3
+                label.form-label(for='mvp1') mvp m1
+                select#mvp1.form-select(aria-label='Default select example')
+                  
+              .mb-3
+                label.form-label(for='mvp2') mvp m2
+                select#mvp2.form-select(aria-label='Default select example')
+
+              .mb-3  
+                label.form-label(for='screenshoots') screenshoots images
+                input#screenshoots.form-control(type='file' accept='image/*' name='screenshoots' multiple)              
+          .modal-footer
+            button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
+            button.btn.btn-primary(type='submit' form="formaddresult") Add Result

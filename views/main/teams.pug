@@ -1,0 +1,14 @@
+extends base
+
+block content
+  section#isi
+    .container 
+      
+      .row.my-4  
+        .col 
+          h1.text-center Teams & Players
+      .row.justify-content-center.mb-3
+        each team in teams
+          .col-md-2.col-3.mb-3
+            a(href=`/teams/${team.slug}`)
+              img.img-thumbnail(src=`/img/teams/${team.logo}` alt='...')

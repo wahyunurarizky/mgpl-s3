@@ -1,0 +1,61 @@
+extends base
+
+block content
+  main.col-md-9.ms-sm-auto.col-lg-10.px-md-4
+    .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pt-3.pb-2.mb-3.border-bottom
+      h1.h2=`Teams Management - ${team.name}`
+    // Button trigger modal
+    button.mb-3.btn.btn-primary(type='button' data-bs-toggle='modal' data-bs-target='#modalAddPlayer')
+      | add new player
+    .row
+      .col.text-center
+        table.table.table-striped.align-middle
+          thead
+            tr
+              th(scope='col') #
+              th(scope='col') photo
+              th(scope='col') Nick
+              th(scope='col') id
+              th(scope='col') Nama
+              th(scope='col') action
+          tbody
+            each player,i in team.players
+              tr
+                th(scope='row')= `${i+1}`
+                td 
+                  img(src=`/img/players/${player.photo}` width='50')
+                td=player.nick 
+                td=player.idGame
+                td=player.name
+                td
+                  //- a.edit-team(href='#' data-bs-toggle="modal" data-bs-target="#modalUpdate" data-id=`${team.id}`)
+                  //-   span.badge.bg-warning.fw-lighter.text-dark.me-2 edit player
+                  a.delete-player(href='#' data-id=`${player.id}`)
+                    span.badge.bg-danger.fw-lighter delete
+    // Modal
+    #modalAddPlayer.modal.fade(tabindex='-1' aria-labelledby='modalAddPlayerLabel' aria-hidden='true')
+      .modal-dialog.modal-dialog-scrollable
+        .modal-content
+          .modal-header
+            h5#modalAddPlayerLabel.modal-title Add New Player
+            button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+          .modal-body
+            form.form--addPlayer#formPlayer
+              .mb-3
+                label.form-label(for='nick') nick
+                input#nick.form-control(type='text' autocomplete="off")
+              .mb-3
+                label.form-label(for='idGame') id Game
+                input#idGame.form-control(type='text' autocomplete="off")
+              .mb-3
+                label.form-label(for='name') Name
+                input#name.form-control(type='text' autocomplete="off")
+              .mb-3
+                label.form-label(for='instagram') instagram
+                input#instagram.form-control(type='text' autocomplete="off")
+              .mb-3  
+                label.form-label(for='photo') photo
+                input#photo.form-control(type='file' accept='image/*' name='photo')              
+          .modal-footer
+            button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
+            button.btn.btn-primary(type='submit' form="formPlayer") Create

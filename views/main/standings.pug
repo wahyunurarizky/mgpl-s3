@@ -1,0 +1,43 @@
+extends base
+
+block content
+  section#isi
+    .container
+      .row.text-center
+        .col.my-3 
+          h2.text-decoration-underline STANDINGS
+      .row 
+        .col
+          //- ul.nav.nav-tabs              
+          //-   li.nav-item
+          //-     a.h4.nav-link(aria-current='page' href=`/standings?divisi=satu` class=`${active== 'satu' ? 'active': ''}`)=`divisi 1`
+          //-   li.nav-item
+          //-     a.h4.nav-link(aria-current='page' href=`/standings?divisi=dua` class=`${active== 'dua' ? 'active': ''}`)=`divisi 2`
+          table.table.table-striped.align-middle.text-center
+            thead
+              tr
+                th(scope='col') #
+                th(scope='col') Logo
+                th(scope='col') Team Name
+                th.d-none.d-lg-table-cell(scope='col') team Name
+                th(scope='col') play
+                th(scope='col') Match (W/L)
+                th(scope='col') Game (W/L)
+                th(scope='col') akum. Point Game
+                th(scope='col') pts
+            tbody
+              each team,i in teams
+                tr
+                  th(scope='row')= `${i+1}`
+                  td 
+                    a(href=`/teams/${team.slug}`)
+                      img(src=`/img/teams/${team.logo}` width='50')
+                  td=team.shortName
+                  td.d-none.d-lg-table-cell
+                    a(href=`/teams/${team.slug}`)=team.name
+                  td=team.played
+                  td=`${team.winMatch} - ${team.loseMatch}`
+                  td=`${team.winGame} - ${team.loseGame}`
+                  td=team.accPoin
+                  td=team.poin
+      

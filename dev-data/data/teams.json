@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Hidroogen Esport",
+    "shortName": "H2O",
+    "logo": "H2O-logo.png",
+    "win": 9,
+    "desc": "H2O adalah komunitas magic chess yg Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium velit dignissimos, deleniti facere odio laboriosam tempore, cupiditate illum ad obcaecati vel cumque vero nesciunt eos, animi voluptatum inventore architecto quaerat.",
+    "achievement": [
+      "Juara 1 tampan tourney s13",
+      "Juara 2 bnw tourney",
+      "Juara 1 oxygen tourney"
+    ]
+  },
+  {
+    "name": "Evolution Gamers",
+    "shortName": "EVG",
+    "logo": "EVG-logo.png",
+    "win": 6,
+    "desc": "EVG adalah komunitas magic chess yg Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium velit dignissimos, deleniti facere odio laboriosam tempore, cupiditate illum ad obcaecati vel cumque vero nesciunt eos, animi voluptatum inventore architecto quaerat.",
+    "achievement": ["Juara 3 tampan tourney s13", "Juara 2 bnw tourney"]
+  },
+  {
+    "name": "Scrim Roar Best",
+    "shortName": "SRB",
+    "logo": "SRB-logo.png",
+    "win": 12,
+    "desc": "SRB adalah komunitas magic chess yg Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium velit dignissimos, deleniti facere odio laboriosam tempore, cupiditate illum ad obcaecati vel cumque vero nesciunt eos, animi voluptatum inventore architecto quaerat.",
+    "achievement": ["Juara 2 bnw tourney", "Juara 3 oxygen tourney"]
+  },
+  {
+    "name": "Revolution Latitude",
+    "shortName": "RvL",
+    "logo": "RvL-logo.png",
+    "win": 9,
+    "desc": "RvL adalah komunitas magic chess yg Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium velit dignissimos, deleniti facere odio laboriosam tempore, cupiditate illum ad obcaecati vel cumque vero nesciunt eos, animi voluptatum inventore architecto quaerat.",
+    "achievement": [
+      "Juara 2 bnw tourney",
+      "Juara 1 oxygen tourney",
+      "Juara 1 mcpl"
+    ]
+  },
+  {
+    "name": "Guardian Force",
+    "shortName": "GF",
+    "logo": "GF-logo.png",
+    "win": 3,
+    "desc": "GF adalah komunitas magic chess yg Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium velit dignissimos, deleniti facere odio laboriosam tempore, cupiditate illum ad obcaecati vel cumque vero nesciunt eos, animi voluptatum inventore architecto quaerat.",
+    "achievement": ["Juara 2 bnw tourney", "Juara 1 oxygen tourney"]
+  }
+]

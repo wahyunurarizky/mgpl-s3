@@ -1,0 +1,92 @@
+extends base
+
+block content
+  main.col-md-9.ms-sm-auto.col-lg-10.px-md-4
+    .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pt-3.pb-2.mb-3.border-bottom
+      h1.h2 Teams Management
+    // Button trigger modal
+    button.mb-3.btn.btn-primary(type='button' data-bs-toggle='modal' data-bs-target='#modalCreateTeam')
+      | Create new team
+    .row
+      .col.text-center
+        h4 divisi 1
+        table.table.table-striped.align-middle
+          thead
+            tr
+              th(scope='col') #
+              th(scope='col') Logo
+              th(scope='col') Team Name
+              th(scope='col') action
+          tbody
+            each team,i in teams
+              tr
+                th(scope='row')= `${i+1}`
+                td 
+                  img(src=`/img/teams/${team.logo}` width='50')
+                td=team.name
+                td
+                  a(href=`/panel-admin/manage-teams/${team.id}`)
+                    span.badge.bg-primary.fw-lighter.me-2 edit players
+                  a.edit-team(href='#' data-bs-toggle="modal" data-bs-target="#modalUpdate" data-id=`${team.id}`)
+                    span.badge.bg-warning.fw-lighter.text-dark.me-2 edit team
+                  a.delete-team(href='#' data-id=`${team.id}`)
+                    span.badge.bg-danger.fw-lighter delete
+    
+    // Modal
+    #modalCreateTeam.modal.fade(tabindex='-1' aria-labelledby='modalCreateTeamLabel' aria-hidden='true')
+      .modal-dialog.modal-dialog-scrollable
+        .modal-content
+          .modal-header
+            h5#modalCreateTeamLabel.modal-title Create New Team
+            button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+          .modal-body
+            form.form--addTeam#formteam
+              .mb-3
+                label.form-label(for='name') Name
+                input#name.form-control(type='text' autocomplete="off")
+              .mb-3
+                label.form-label(for='shortName') short name
+                input#shortName.form-control(type='text' autocomplete="off")
+              .mb-3
+                label.form-label(for='achievement') achievement
+                textarea#achievement.form-control(rows='3')
+              .mb-3
+                label.form-label(for='description') description
+                textarea#description.form-control(rows='3')
+              .mb-3  
+                label.form-label(for='logo') Logo images
+                input#logo.form-control(type='file' accept='image/*' name='logo')              
+          .modal-footer
+            button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
+            button.btn.btn-primary(type='submit' form="formteam") Create
+    
+    #modalUpdate.modal.fade(tabindex='-1' aria-labelledby='modalDetail' aria-hidden='true')
+      .modal-dialog.modal-dialog-scrollable
+        .modal-content
+          .modal-header
+            h5#modalDetail.modal-title Edit Team
+            button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+          .modal-body
+            form.form--updateTeam#formUpdateTeam
+              input#teamId(type="hidden")
+              
+              .mb-3
+                label.form-label(for='name') Name
+                input#nameU.form-control(type='text' autocomplete="off" )
+              .mb-3
+                label.form-label(for='shortName') short name
+                input#shortNameU.form-control(type='text' autocomplete="off")
+              .mb-3
+                label.form-label(for='achievement') achievement
+                textarea#achievementU.form-control(rows='3')
+              .mb-3
+                label.form-label(for='description') description
+                textarea#descriptionU.form-control(rows='3')
+              .mb-3  
+                label.form-label.d-block(for='logo') Logo images
+                <img src="" class="img-thumbnail img-logo mb-3" width="100" alt="">
+                input#logoU.form-control(type='file' accept='image/*' name='logo')
+              .mb-3 
+          .modal-footer
+            button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
+            button.btn.btn-primary(type='submit' form="formUpdateTeam") Save changes

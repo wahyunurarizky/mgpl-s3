@@ -1,0 +1,45 @@
+body {
+  font-family: 'Teko', sans-serif;
+}
+
+.form-login {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+.jumbotron {
+  background: url('/img/jumbotron.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding-top: 30vh;
+  padding-bottom: 10vh;
+  text-align: center;
+  min-height: 100vh;
+  color: white;
+}
+
+.jumbo-list {
+  list-style-type: none;
+  margin-top: 200px;
+  padding: 0;
+}
+.jumbo-list li {
+  display: inline-block;
+  margin: 0 120px;
+}
+.jumbo-list li a {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+}
+.jumbo-list li a:hover {
+  color: yellow;
+}
+hr.solid {
+  border-top: 3px solid #000;
+}
+#isi {
+  min-height: 600px;
+}

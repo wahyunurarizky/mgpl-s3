@@ -1,0 +1,75 @@
+extends base
+
+block jumbotron  
+  header
+    .jumbotron
+      h1.mb-3 H2O League - From Community to community
+      p.mb-3 show us the best team in magic chess
+      ul.jumbo-list
+        li.mb-3
+          a(href='/schedule') Schedules
+        li.mb-3
+          a(href='/standings') Standings
+        li.mb-3
+          a(href='/teams') Teams & Player
+block content
+  section#isi
+    .container
+      .row.text-center.mt-4
+        h2 Top 5
+      .row
+        .col.text-center
+          table.table.table-striped.align-middle
+            thead
+              tr
+                th(scope='col') #
+                th(scope='col') Logo
+                th(scope='col') Team Name
+                th.d-none.d-lg-table-cell(scope='col') team Name
+                th(scope='col') play
+                th(scope='col') Match (W-L)
+                th(scope='col') Game (W-L)
+                th(scope='col') akum. Point Game
+                th(scope='col') pts
+            tbody
+              each team,i in teams
+                tr
+                  th(scope='row')= `${i+1}`
+                  td 
+                    a(href=`/teams/${team.slug}`)
+                      img(src=`/img/teams/${team.logo}` width='50')
+                  td=team.shortName
+                  td.d-none.d-lg-table-cell
+                    a.text-decoration-none.text-dark(href=`/teams/${team.slug}`)=team.name
+                  td=team.played
+                  td=`${team.winMatch} - ${team.loseMatch}`
+                  td=`${team.winGame} - ${team.loseGame}`
+                  td=team.accPoin
+                  td=team.poin
+          a(href='/standings') lihat klasemen selengkapnya
+        hr.my-4
+      .row.text-center.mt-4
+        .col 
+          h2 Schedule next 
+          if(schedules.length > 0)
+            table.table.table-striped.table-hover.align-middle
+              tbody
+                -for(let i=0;i<5;i++)
+                  tr
+                    td
+                      img.img-fluid(src=`/img/teams/${schedules[i].t1.logo}` width='50' height='50' alt='')
+                    td  
+                      a.text-decoration-none.text-dark(href=`/teams/${schedules[i].t1.slug}`)=schedules[i].t1.shortName
+                    td
+                    td vs
+                    td
+                      a.text-decoration-none.text-dark(href=`/teams/${schedules[i].t2.slug}`)=schedules[i].t2.shortName
+                    td
+                      img.img-fluid(src=`/img/teams/${schedules[i].t2.logo}` width='50' height='50' alt='')
+                    td=`${schedules[i].startDate.toLocaleString('id', {hour: 'numeric', minute: 'numeric'})} WIB`
+          a(href='/schedule') klik untuk melihat jadwal dan hasil selengkapnya
+      //- hr
+      //- .row.justify-content-center
+      //-   .col-md-6.text-center  
+      //-     a.text-center.btn.btn-primary(href='https://api.whatsapp.com/send/?phone=089532029873') Daftar Sekarang !
+      //-     img.img-thumbnail(src='/img/poster.png')

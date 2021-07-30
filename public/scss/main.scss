@@ -1,0 +1,14 @@
+// variables
+$primary: #401f7c;
+$border-radius: 0;
+$border-radius-sm: 0;
+$border-radius-lg: 0;
+$dark: #0b082e;
+//
+// util
+$utilities: () !default;
+
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+@import url('https://fonts.googleapis.com/css2?family=Teko&display=swap');
+@import 'style';
+@import 'admin';

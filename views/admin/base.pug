@@ -1,0 +1,21 @@
+doctype html 
+html
+  head
+    block head
+      meta(charset="UTF-8")
+      meta(name="viewport" content="width=device-width, initial-scale=1.0")  
+      link(rel='stylesheet' href='/css/main.css')
+      title Panel-admin | #{title}
+      <link rel="shortcut icon" type="image/jpg" href="/img/h2o.jpg"/>
+      <script data-ad-client="ca-pub-6454722215270594" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+  body
+    //- header
+    include _header
+
+    //- content
+    .container-fluid
+      .row
+        include _sidenav
+        block content
+    script(src='/js/bundle.js')

@@ -1,0 +1,64 @@
+extends base
+
+block content
+  section#isi
+    .container
+      .row.text-center.my-4
+        .col
+          h1=`${team.shortName} - ${team.name}`
+          img(src=`/img/teams/${team.logo}` width="300")
+      .row.bg-dark.py-4.text-white
+        .col-md-6.text-center   
+          h2 About Us
+          each text in team.description.split('\n') 
+            p=text
+        .col-md-6.text-center      
+          h2 Achievement
+          each text in team.achievement.split('\n') 
+            p=text
+      .row.mt-4
+        .col
+          h2.text-center Key Player 
+      .row.justify-content-center
+        .col-6.col-md-3
+          .card.text-center
+            img.card-img-top(src=`/img/players/${team.keyPlayer.photo}` alt='...')
+            .card-body
+              h4.card-title=team.keyPlayer.nick
+              h4=`${team.keyPlayer.mvp} kali mvp`
+      
+      .row.pt-4
+        .col 
+          h2.text-center List Player 
+      .row  
+        each player in team.players 
+          .col-md-3.col-6.mb-3
+            .card.text-center
+              img.card-img-top(src=`/img/players/${player.photo}` alt='...')
+              .card-body
+                h4.card-title=player.nick
+                button.btn.btn-primary.btn-detail-player(type='button' data-bs-toggle='modal' data-bs-target='#detailPlayer' data-id=`${player.id}`)
+                  | Detail Player
+    // Modal
+    #detailPlayer.modal.fade(tabindex='-1' aria-labelledby='detailPlayerLabel' aria-hidden='true')
+      .modal-dialog
+        .modal-content
+          .modal-header
+            h5#detailPlayerLabel.modal-title Detail Player
+            button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+          .modal-body
+            dl.row
+              dt.col-sm-3 Nickname
+              dd.col-sm-9#nick H2O. arzky
+              dt.col-sm-3 Id Game
+              dd.col-sm-9#idGame 220505292
+              dt.col-sm-3 Nama Asli
+              dd.col-sm-9#name Wahyu Nur Arizky
+              dt.col-sm-3 Instagram
+              dd.col-sm-9#instagram @wahyunurarizky
+              dt.col-sm-3 MVP
+              dd.col-sm-9#mvp 4 kali
+              dt.col-sm-3 Motto
+              dd.col-sm-9#motto "ini motto"
+          .modal-footer
+            button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close

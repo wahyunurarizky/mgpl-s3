@@ -1,0 +1,147 @@
+extends base
+
+block content
+  section#isi
+    .container
+      .row.text-center
+        .col.mt-4
+          h1.text-decoration-underline Schedules and Results
+      if(schedulesA.length < 1)
+        .row.justify-content-center  
+          .col-md-6
+            img.img-thumbnail(src='/img/jadwal.png')
+
+      else
+        
+        .row.mt-4
+          .col
+            ul.nav.nav-tabs
+              - for(let i =1;i<=day;i++)
+                li.nav-item
+                  a.nav-link(aria-current='page' href=`/schedule?day=${i}` class=`${active == i ?  'active':''}`)=`day ${i}`
+      
+        .row.text-center.my-4
+          .col
+            - let date = schedulesA[0].startDate.toLocaleString('id-ID', {month: 'long', year: 'numeric',day:'2-digit', weekday: 'long'})
+            - let time = schedulesA[0].startDate.toLocaleString('id-ID', {hour: 'numeric', minute: 'numeric'})
+            h4=date
+        .row.mb-4.justify-content-center
+          .col-md-6
+            h2
+            table.table.table-striped.table-hover.align-middle
+              thead
+                tr
+                  th.text-dark.text-center(scope='col' colspan='10')=`${time} WIB`
+              tbody
+                each schedule in schedulesA  
+                  if schedule.finish
+                    tr
+                      td
+                        img.img-fluid(src=`/img/teams/${schedule.t1.logo}` width='50' height='50' alt='')
+                      td  
+                        a.text-decoration-none.text-dark(href=`/teams/${schedule.t1.slug}`)=schedule.t1.shortName
+                      if (schedule.lose == schedule.t1.id)
+                        td.fw-bold=`${schedule.score == 'full' ? '0': '1'}`
+                      else 
+                        td.fw-bold 2
+                      td vs
+                      if (schedule.lose == schedule.t2.id)
+                        td.fw-bold=`${schedule.score == 'full' ? '0': '1'}`
+                      else 
+                        td.fw-bold 2
+                      td
+                        a.text-decoration-none.text-dark(href=`/teams/${schedule.t2.slug}`)=schedule.t2.shortName
+                      td
+                        img.img-fluid(src=`/img/teams/${schedule.t2.logo}` width='50' height='50' alt='')
+                      td 
+                        // Button trigger modal
+                        a.btn-result-detail.text-primary(href='#' data-bs-toggle='modal' data-bs-target='#modalDetailResult' data-id=`${schedule.id}`)
+                            | Detail
+                  else
+                    tr
+                      td
+                        img.img-fluid(src=`/img/teams/${schedule.t1.logo}` width='50' height='50' alt='')
+                      td  
+                        a.text-decoration-none.text-dark(href=`/teams/${schedule.t1.slug}`)=schedule.t1.shortName
+                      
+                      td.fw-bold
+                      td vs
+                      td.fw-bold
+                      td
+                        a.text-decoration-none.text-dark(href=`/teams/${schedule.t2.slug}`)=schedule.t2.shortName
+                      td
+                        img.img-fluid(src=`/img/teams/${schedule.t2.logo}` width='50' height='50' alt='')
+                      td
+
+          if(schedulesB.length>0)            
+            - time = schedulesB[0].startDate.toLocaleString('id-ID', {hour: 'numeric', minute: 'numeric'})
+            .col-md-6
+              h2
+              table.table.table-striped.table-hover.align-middle
+                thead
+                  tr
+                    th.text-dark.text-center(scope='col' colspan='10')=`${time} WIB`
+                tbody
+                  each schedule in schedulesB
+                    if schedule.finish
+                      tr
+                        td
+                          img.img-fluid(src=`/img/teams/${schedule.t1.logo}` width='50' height='50' alt='')
+                        td  
+                          a.text-decoration-none.text-dark(href=`/teams/${schedule.t1.slug}`)=schedule.t1.shortName
+                        if (schedule.lose == schedule.t1.id)
+                          td.fw-bold=`${schedule.score == 'full' ? '0': '1'}`
+                        else 
+                          td.fw-bold 2
+                        td vs
+                        if (schedule.lose == schedule.t2.id)
+                          td.fw-bold=`${schedule.score == 'full' ? '0': '1'}`
+                        else 
+                          td.fw-bold 2
+                        td
+                          a.text-decoration-none.text-dark(href=`/teams/${schedule.t2.slug}`)=schedule.t2.shortName
+                        td
+                          img.img-fluid(src=`/img/teams/${schedule.t2.logo}` width='50' height='50' alt='')
+                        td 
+                          // Button trigger modal
+                          a.btn-result-detail.text-primary(gref='#' data-bs-toggle='modal' data-bs-target='#modalDetailResult' data-id=`${schedule.id}`)
+                            | Detail
+                    else
+                      tr
+                        td
+                          img.img-fluid(src=`/img/teams/${schedule.t1.logo}` width='50' height='50' alt='')
+                        td  
+                          a.text-decoration-none.text-dark(href=`/teams/${schedule.t1.slug}`)=schedule.t1.shortName
+                        
+                        td.fw-bold
+                        td vs
+                        td.fw-bold
+                        td
+                          a.text-decoration-none.text-dark(href=`/teams/${schedule.t2.slug}`)=schedule.t2.shortName
+                        td
+                          img.img-fluid(src=`/img/teams/${schedule.t2.logo}` width='50' height='50' alt='')
+                        td
+    
+    // Modal
+    #modalDetailResult.modal.fade(tabindex='-1' aria-labelledby='modalDetailResultLabel' aria-hidden='true')
+      .modal-dialog
+        .modal-content
+          .modal-header
+            h5#modalDetailResultLabel.modal-title Detail Match
+            button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+          .modal-body
+            dl.row
+              dt.col-sm-3 screenshoots
+              dd.col-sm-9#ss 
+                
+              dt.col-sm-3 mvp (m1 & 2)
+              dd.col-sm-9#mvp H2O. arizky
+              dt.col-sm-3 total poin game <br>(m1 & 2)
+              dd.col-sm-9#poin 30-28
+              
+          .modal-footer
+            button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
+
+          
+
+                            

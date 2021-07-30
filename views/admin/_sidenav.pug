@@ -1,0 +1,24 @@
+nav#sidebarMenu.col-md-3.col-lg-2.d-md-block.bg-light.sidebar.collapse
+  .position-sticky.pt-3
+    ul.nav.flex-column
+      li.nav-item
+        a.nav-link.active(aria-current='page' href='/panel-admin')
+          span(data-feather='home')
+          | Dashboard
+      li.nav-item
+        a.nav-link(href='/panel-admin/manage-teams')
+          span(data-feather='user')
+          | Manage Teams
+      li.nav-item
+        a.nav-link(href='/panel-admin/manage-schedule')
+          span(data-feather='calendar')
+          | Schedule
+      li.nav-item
+        a.nav-link(href='/panel-admin/start')
+          span(data-feather='edit')
+          | Start League
+      hr.mx-3
+      li.nav-item
+        a.nav-link.btn-logout(href='#')
+          span(data-feather='edit')
+          | LOGOUT
