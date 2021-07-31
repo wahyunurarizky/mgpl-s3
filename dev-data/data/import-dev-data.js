@@ -2,6 +2,7 @@ const fs = require('fs');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const Team = require('../../models/teamModel');
+const Player = require('../../models/playerModel');
 
 dotenv.config({ path: './config.env' });
 
@@ -37,6 +38,7 @@ const importData = async () => {
 const deleteData = async () => {
   try {
     await Team.deleteMany();
+    await Player.deleteMany();
     console.log('data successfully deleted');
   } catch (e) {
     console.log(e);
