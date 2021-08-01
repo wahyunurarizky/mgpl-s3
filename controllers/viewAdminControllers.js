@@ -1,8 +1,26 @@
 const Player = require('../models/playerModel');
 const Schedule = require('../models/scheduleModels');
 const Team = require('../models/teamModel');
+const Streamer = require('../models/streamerModel');
 const catchAsync = require('../utils/catchAsync');
+const News = require('../models/newsModel');
 
+exports.manageStreamer = catchAsync(async (req, res, next) => {
+  const streamers = await Streamer.find();
+
+  res.status(200).render('admin/manageStreamer.pug', {
+    title: 'manage teams',
+    streamers,
+  });
+});
+exports.manageNews = catchAsync(async (req, res, next) => {
+  const news = await News.find();
+
+  res.status(200).render('admin/manageNews.pug', {
+    title: 'manage teams',
+    news,
+  });
+});
 exports.manageTeams = catchAsync(async (req, res, next) => {
   const teams = await Team.find();
 

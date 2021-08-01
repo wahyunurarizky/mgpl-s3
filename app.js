@@ -14,6 +14,8 @@ const AppError = require('./utils/appError');
 const teamRoutes = require('./routes/teamRoutes');
 const userRoutes = require('./routes/userRoutes');
 const playerRoutes = require('./routes/playerRoutes');
+const newsRoutes = require('./routes/newsRoutes');
+const streamerRoutes = require('./routes/streamerRoutes');
 const mainViewRoutes = require('./routes/mainViewRoutes');
 const adminViewRoutes = require('./routes/adminViewRoutes');
 const scheduleRoutes = require('./routes/scheduleRoutes');
@@ -95,6 +97,8 @@ app.use('/api/v1/teams', teamRoutes);
 app.use('/api/v1/schedules', scheduleRoutes);
 app.use('/api/v1/players', playerRoutes);
 app.use('/api/v1/users', userRoutes);
+app.use('/api/v1/news', newsRoutes);
+app.use('/api/v1/streamer', streamerRoutes);
 
 // handling unhandled routes
 app.all('*', (req, res, next) => {

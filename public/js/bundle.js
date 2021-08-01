@@ -23422,6 +23422,212 @@ var resultDetail = /*#__PURE__*/function () {
 }();
 
 exports.resultDetail = resultDetail;
+},{"axios":"../../node_modules/axios/index.js"}],"manageStreamer.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.deleteStreamer = exports.createStreamer = void 0;
+
+var _axios = _interopRequireDefault(require("axios"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+var createStreamer = /*#__PURE__*/function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(data) {
+    var url, res;
+    return regeneratorRuntime.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.prev = 0;
+            url = '/api/v1/streamer';
+            _context.next = 4;
+            return (0, _axios.default)({
+              method: 'post',
+              url: url,
+              data: data
+            });
+
+          case 4:
+            res = _context.sent;
+
+            if (res.data.status === 'success') {
+              alert('successfull');
+              location.reload();
+            }
+
+            _context.next = 11;
+            break;
+
+          case 8:
+            _context.prev = 8;
+            _context.t0 = _context["catch"](0);
+            alert(_context.t0.response.data.message);
+
+          case 11:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee, null, [[0, 8]]);
+  }));
+
+  return function createStreamer(_x) {
+    return _ref.apply(this, arguments);
+  };
+}();
+
+exports.createStreamer = createStreamer;
+
+var deleteStreamer = /*#__PURE__*/function () {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(id) {
+    var url;
+    return regeneratorRuntime.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.prev = 0;
+            url = "/api/v1/streamer/".concat(id);
+            _context2.next = 4;
+            return (0, _axios.default)({
+              method: 'delete',
+              url: url
+            });
+
+          case 4:
+            alert('successfull');
+            location.reload();
+            _context2.next = 11;
+            break;
+
+          case 8:
+            _context2.prev = 8;
+            _context2.t0 = _context2["catch"](0);
+            alert(_context2.t0.response.data.message);
+
+          case 11:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2, null, [[0, 8]]);
+  }));
+
+  return function deleteStreamer(_x2) {
+    return _ref2.apply(this, arguments);
+  };
+}();
+
+exports.deleteStreamer = deleteStreamer;
+},{"axios":"../../node_modules/axios/index.js"}],"manageNews.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.deleteNews = exports.createNews = void 0;
+
+var _axios = _interopRequireDefault(require("axios"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+var createNews = /*#__PURE__*/function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(data) {
+    var url, res;
+    return regeneratorRuntime.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.prev = 0;
+            url = '/api/v1/news';
+            _context.next = 4;
+            return (0, _axios.default)({
+              method: 'post',
+              url: url,
+              data: data
+            });
+
+          case 4:
+            res = _context.sent;
+
+            if (res.data.status === 'success') {
+              alert('successfull');
+              location.reload();
+            }
+
+            _context.next = 11;
+            break;
+
+          case 8:
+            _context.prev = 8;
+            _context.t0 = _context["catch"](0);
+            alert(_context.t0.response.data.message);
+
+          case 11:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee, null, [[0, 8]]);
+  }));
+
+  return function createNews(_x) {
+    return _ref.apply(this, arguments);
+  };
+}();
+
+exports.createNews = createNews;
+
+var deleteNews = /*#__PURE__*/function () {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(id) {
+    var url;
+    return regeneratorRuntime.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.prev = 0;
+            url = "/api/v1/news/".concat(id);
+            _context2.next = 4;
+            return (0, _axios.default)({
+              method: 'delete',
+              url: url
+            });
+
+          case 4:
+            alert('successfull');
+            location.reload();
+            _context2.next = 11;
+            break;
+
+          case 8:
+            _context2.prev = 8;
+            _context2.t0 = _context2["catch"](0);
+            alert(_context2.t0.response.data.message);
+
+          case 11:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2, null, [[0, 8]]);
+  }));
+
+  return function deleteNews(_x2) {
+    return _ref2.apply(this, arguments);
+  };
+}();
+
+exports.deleteNews = deleteNews;
 },{"axios":"../../node_modules/axios/index.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
@@ -23443,6 +23649,10 @@ var _detailPlayer = require("./detailPlayer");
 
 var _resultDetail = require("./resultDetail");
 
+var _manageStreamer = require("./manageStreamer");
+
+var _manageNews = require("./manageNews");
+
 // import '@babel/polyfill';
 var loginForm = document.querySelector('.form-login');
 var formAddTeam = document.querySelector('.form--addTeam');
@@ -23455,6 +23665,10 @@ var addResultButton = document.querySelectorAll('.button-add-result');
 var formUpdateResult = document.querySelector('.form--addResult');
 var buttonDetailPlayer = document.querySelectorAll('.btn-detail-player');
 var buttonResultDetail = document.querySelectorAll('.btn-result-detail');
+var formAddStreamer = document.querySelector('.form--addStreamer');
+var deleteStreamerButton = document.querySelectorAll('.delete-streamer');
+var formAddNews = document.querySelector('.form--addNews');
+var deleteNewsButton = document.querySelectorAll('.delete-news');
 var btnLogout = document.querySelector('.btn-logout');
 
 if (loginForm) {
@@ -23570,7 +23784,6 @@ if (formUpdateResult) {
     }
 
     var mvp = [document.getElementById('mvp1').value, document.getElementById('mvp2').value];
-    var files = document.getElementById('screenshoots').files;
     var formR = new FormData(); // const name = document.getElementById('name').value;
     // const shortName = document.getElementById('shortName').value;
 
@@ -23580,9 +23793,15 @@ if (formUpdateResult) {
     formR.append('poinTimWin', document.getElementById('totalWinTimMenang').value);
     formR.append('poinTimLose', document.getElementById('totalWinTimKalah').value);
     formR.append('mvp[]', mvp[0]);
-    formR.append('mvp[]', mvp[1]);
-    formR.append('screenshoots', document.getElementById('screenshoots').files[0]);
-    formR.append('screenshoots', document.getElementById('screenshoots').files[1]); // formR.append(
+    formR.append('mvp[]', mvp[1]); // formR.append(
+    //   'screenshoots',
+    //   document.getElementById('screenshoots').files[0]
+    // );
+    // formR.append(
+    //   'screenshoots',
+    //   document.getElementById('screenshoots').files[1]
+    // );
+    // formR.append(
     //   'screenshoots[]',
     //   document.getElementById('screenshoots').files[1]
     // );
@@ -23612,10 +23831,52 @@ if (buttonResultDetail) {
   });
 }
 
+if (formAddStreamer) {
+  formAddStreamer.addEventListener('submit', function (e) {
+    e.preventDefault(); // sama aja buat multipar/form-data
+
+    var form = new FormData(); // const name = document.getElementById('name').value;
+    // const shortName = document.getElementById('shortName').value;
+
+    form.append('photo', document.getElementById('photo').files[0]);
+    (0, _manageStreamer.createStreamer)(form);
+  });
+}
+
+if (deleteStreamerButton) {
+  deleteStreamerButton.forEach(function (button) {
+    button.addEventListener('click', function (e) {
+      e.preventDefault();
+      (0, _manageStreamer.deleteStreamer)(button.dataset['id']);
+    });
+  });
+}
+
+if (formAddNews) {
+  formAddNews.addEventListener('submit', function (e) {
+    e.preventDefault(); // sama aja buat multipar/form-data
+
+    var form = new FormData(); // const name = document.getElementById('name').value;
+    // const shortName = document.getElementById('shortName').value;
+
+    form.append('photo', document.getElementById('photo').files[0]);
+    (0, _manageNews.createNews)(form);
+  });
+}
+
+if (deleteNewsButton) {
+  deleteNewsButton.forEach(function (button) {
+    button.addEventListener('click', function (e) {
+      e.preventDefault();
+      (0, _manageNews.deleteNews)(button.dataset['id']);
+    });
+  });
+}
+
 if (btnLogout) {
   btnLogout.addEventListener('click', _login.logout);
 }
-},{"core-js/stable":"../../node_modules/core-js/stable/index.js","regenerator-runtime/runtime":"../../node_modules/regenerator-runtime/runtime.js","bootstrap":"../../node_modules/bootstrap/dist/js/bootstrap.esm.js","./login":"login.js","./manageTeam":"manageTeam.js","./managePlayers":"managePlayers.js","./manageResults":"manageResults.js","./detailPlayer":"detailPlayer.js","./resultDetail":"resultDetail.js"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"core-js/stable":"../../node_modules/core-js/stable/index.js","regenerator-runtime/runtime":"../../node_modules/regenerator-runtime/runtime.js","bootstrap":"../../node_modules/bootstrap/dist/js/bootstrap.esm.js","./login":"login.js","./manageTeam":"manageTeam.js","./managePlayers":"managePlayers.js","./manageResults":"manageResults.js","./detailPlayer":"detailPlayer.js","./resultDetail":"resultDetail.js","./manageStreamer":"manageStreamer.js","./manageNews":"manageNews.js"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -23643,7 +23904,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50398" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65300" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

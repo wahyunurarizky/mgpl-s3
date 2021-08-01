@@ -11,11 +11,7 @@ router.route('/').get(scheduleControllers.getAllSchedules);
 router
   .route('/:id')
   .get(scheduleControllers.getOneSchedule)
-  .patch(
-    scheduleControllers.uploadScreenshoots,
-    scheduleControllers.resizeScreenshoots,
-    scheduleControllers.updateSchedules
-  );
+  .patch(scheduleControllers.updateSchedules);
 // .delete(teamControllers.deleteTeam);
 
 module.exports = router;

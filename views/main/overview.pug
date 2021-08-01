@@ -74,16 +74,20 @@ block content
           h2 Live Streaming 
           #carouselExampleIndicators.carousel.slide(data-bs-ride='carousel')
             .carousel-indicators
-              button.active(type='button', data-bs-target='#carouselExampleIndicators', data-bs-slide-to='0', aria-current='true', aria-label='Slide 1')
-              button(type='button', data-bs-target='#carouselExampleIndicators', data-bs-slide-to='1', aria-label='Slide 2')
-              button(type='button', data-bs-target='#carouselExampleIndicators', data-bs-slide-to='2', aria-label='Slide 3')
+              each newz,i in streamers
+                if(i == 0)
+                  button.active(type='button', data-bs-target='#carouselExampleIndicators2', data-bs-slide-to=`${i}`, aria-current='true', aria-label='Slide 1')
+                else 
+                  button(type='button', data-bs-target='#carouselExampleIndicators2', data-bs-slide-to=`${i}`, aria-current='true', aria-label=`Slide ${i+1}`)
+
             .carousel-inner
-              .carousel-item.active
-                img.d-block.w-100(src='/img/jumbotron1.jpg', alt='...')
-              .carousel-item
-                img.d-block.w-100(src='/img/jumbotron1.jpg', alt='...')
-              .carousel-item
-                img.d-block.w-100(src='/img/jumbotron1.jpg', alt='...')
+              each newz,i in streamers
+                if(i == 0)
+                  .carousel-item.active
+                    img.d-block.w-100(src=`/img/streamer/${newz.photo}`, alt='...')
+                else 
+                  .carousel-item
+                    img.d-block.w-100(src=`/img/streamer/${newz.photo}`, alt='...')
             button.carousel-control-prev(type='button', data-bs-target='#carouselExampleIndicators', data-bs-slide='prev')
               span.carousel-control-prev-icon(aria-hidden='true')
               span.visually-hidden Previous
@@ -93,22 +97,27 @@ block content
           a(href='#') Hubungi kami jika ingin bergabung menjadi streamer
         .col-md-6
           h2 News Update 
-          #carouselExampleIndicators.carousel.slide(data-bs-ride='carousel')
+          #carouselExampleIndicators2.carousel.slide(data-bs-ride='carousel')
             .carousel-indicators
-              button.active(type='button', data-bs-target='#carouselExampleIndicators', data-bs-slide-to='0', aria-current='true', aria-label='Slide 1')
-              button(type='button', data-bs-target='#carouselExampleIndicators', data-bs-slide-to='1', aria-label='Slide 2')
-              button(type='button', data-bs-target='#carouselExampleIndicators', data-bs-slide-to='2', aria-label='Slide 3')
+              each newz,i in news
+                if(i == 0)
+                  button.active(type='button', data-bs-target='#carouselExampleIndicators2', data-bs-slide-to=`${i}`, aria-current='true', aria-label='Slide 1')
+                else 
+                  button(type='button', data-bs-target='#carouselExampleIndicators2', data-bs-slide-to=`${i}`, aria-current='true', aria-label=`Slide ${i+1}`)
+
             .carousel-inner
-              .carousel-item.active
-                img.d-block.w-100(src='/img/jumbotron1.jpg', alt='...')
-              .carousel-item
-                img.d-block.w-100(src='/img/jumbotron1.jpg', alt='...')
-              .carousel-item
-                img.d-block.w-100(src='/img/jumbotron1.jpg', alt='...')
-            button.carousel-control-prev(type='button', data-bs-target='#carouselExampleIndicators', data-bs-slide='prev')
+              each newz,i in news
+                if(i == 0)
+                  .carousel-item.active
+                    img.d-block.w-100(src=`/img/news/${newz.photo}`, alt='...')
+                else 
+                  .carousel-item
+                    img.d-block.w-100(src=`/img/news/${newz.photo}`, alt='...')
+
+            button.carousel-control-prev(type='button', data-bs-target='#carouselExampleIndicators2', data-bs-slide='prev')
               span.carousel-control-prev-icon(aria-hidden='true')
               span.visually-hidden Previous
-            button.carousel-control-next(type='button', data-bs-target='#carouselExampleIndicators', data-bs-slide='next')
+            button.carousel-control-next(type='button', data-bs-target='#carouselExampleIndicators2', data-bs-slide='next')
               span.carousel-control-next-icon(aria-hidden='true')
               span.visually-hidden Next
           br.my5

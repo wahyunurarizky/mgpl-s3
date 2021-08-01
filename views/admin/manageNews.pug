@@ -1,0 +1,43 @@
+extends base
+
+block content
+  main.col-md-9.ms-sm-auto.col-lg-10.px-md-4
+    .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pt-3.pb-2.mb-3.border-bottom
+      h1.h2 Info Management
+    // Button trigger modal
+    button.mb-3.btn.btn-primary(type='button' data-bs-toggle='modal' data-bs-target='#modalCreateNews')
+      | Create new Info
+    .row
+      .col.text-center
+        table.table.table-striped.align-middle
+          thead
+            tr
+              th(scope='col') #
+              th(scope='col') photo
+              th(scope='col') action
+          tbody
+            each s,i in news
+              tr
+                th(scope='row')= `${i+1}`
+                td 
+                  img(src=`/img/news/${s.photo}` width='200')
+                td
+                  a.delete-news(href='#' data-id=`${s.id}`)
+                    span.badge.bg-danger.fw-lighter delete
+    
+    // Modal
+    #modalCreateNews.modal.fade(tabindex='-1' aria-labelledby='modalCreateNewsLabel' aria-hidden='true')
+      .modal-dialog.modal-dialog-scrollable
+        .modal-content
+          .modal-header
+            h5#modalCreateNewsLabel.modal-title Create New Info
+            button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+          .modal-body
+            form.form--addNews#formNews
+              .mb-3  
+                label.form-label(for='photo') Photo
+                input#photo.form-control(type='file' accept='image/*' name='photo')              
+          .modal-footer
+            button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
+            button.btn.btn-primary(type='submit' form="formNews") Create
+    

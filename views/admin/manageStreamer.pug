@@ -1,0 +1,43 @@
+extends base
+
+block content
+  main.col-md-9.ms-sm-auto.col-lg-10.px-md-4
+    .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pt-3.pb-2.mb-3.border-bottom
+      h1.h2 Streamer Management
+    // Button trigger modal
+    button.mb-3.btn.btn-primary(type='button' data-bs-toggle='modal' data-bs-target='#modalCreateStreamer')
+      | Create new Streamer
+    .row
+      .col.text-center
+        table.table.table-striped.align-middle
+          thead
+            tr
+              th(scope='col') #
+              th(scope='col') photo
+              th(scope='col') action
+          tbody
+            each s,i in streamers
+              tr
+                th(scope='row')= `${i+1}`
+                td 
+                  img(src=`/img/streamer/${s.photo}` width='200')
+                td
+                  a.delete-streamer(href='#' data-id=`${s.id}`)
+                    span.badge.bg-danger.fw-lighter delete
+    
+    // Modal
+    #modalCreateStreamer.modal.fade(tabindex='-1' aria-labelledby='modalCreateStreamerLabel' aria-hidden='true')
+      .modal-dialog.modal-dialog-scrollable
+        .modal-content
+          .modal-header
+            h5#modalCreateStreamerLabel.modal-title Create New Streamer
+            button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+          .modal-body
+            form.form--addStreamer#formstreamer
+              .mb-3  
+                label.form-label(for='photo') Photo
+                input#photo.form-control(type='file' accept='image/*' name='photo')              
+          .modal-footer
+            button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
+            button.btn.btn-primary(type='submit' form="formstreamer") Create
+    

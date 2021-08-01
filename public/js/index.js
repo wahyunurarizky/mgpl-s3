@@ -8,6 +8,8 @@ import { createPlayer, deletePlayer } from './managePlayers';
 import { addResult, updateResult } from './manageResults';
 import { detailPlayer } from './detailPlayer';
 import { resultDetail } from './resultDetail';
+import { createStreamer, deleteStreamer } from './manageStreamer';
+import { createNews, deleteNews } from './manageNews';
 
 const loginForm = document.querySelector('.form-login');
 const formAddTeam = document.querySelector('.form--addTeam');
@@ -20,6 +22,10 @@ const addResultButton = document.querySelectorAll('.button-add-result');
 const formUpdateResult = document.querySelector('.form--addResult');
 const buttonDetailPlayer = document.querySelectorAll('.btn-detail-player');
 const buttonResultDetail = document.querySelectorAll('.btn-result-detail');
+const formAddStreamer = document.querySelector('.form--addStreamer');
+const deleteStreamerButton = document.querySelectorAll('.delete-streamer');
+const formAddNews = document.querySelector('.form--addNews');
+const deleteNewsButton = document.querySelectorAll('.delete-news');
 const btnLogout = document.querySelector('.btn-logout');
 
 if (loginForm) {
@@ -141,7 +147,6 @@ if (formUpdateResult) {
       document.getElementById('mvp1').value,
       document.getElementById('mvp2').value,
     ];
-    const files = document.getElementById('screenshoots').files;
 
     const formR = new FormData();
     // const name = document.getElementById('name').value;
@@ -160,14 +165,14 @@ if (formUpdateResult) {
     );
     formR.append('mvp[]', mvp[0]);
     formR.append('mvp[]', mvp[1]);
-    formR.append(
-      'screenshoots',
-      document.getElementById('screenshoots').files[0]
-    );
-    formR.append(
-      'screenshoots',
-      document.getElementById('screenshoots').files[1]
-    );
+    // formR.append(
+    //   'screenshoots',
+    //   document.getElementById('screenshoots').files[0]
+    // );
+    // formR.append(
+    //   'screenshoots',
+    //   document.getElementById('screenshoots').files[1]
+    // );
     // formR.append(
     //   'screenshoots[]',
     //   document.getElementById('screenshoots').files[1]
@@ -192,6 +197,47 @@ if (buttonResultDetail) {
     button.addEventListener('click', (e) => {
       e.preventDefault();
       resultDetail(button.dataset['id']);
+    });
+  });
+}
+
+if (formAddStreamer) {
+  formAddStreamer.addEventListener('submit', (e) => {
+    e.preventDefault();
+    // sama aja buat multipar/form-data
+    const form = new FormData();
+    // const name = document.getElementById('name').value;
+    // const shortName = document.getElementById('shortName').value;
+
+    form.append('photo', document.getElementById('photo').files[0]);
+    createStreamer(form);
+  });
+}
+if (deleteStreamerButton) {
+  deleteStreamerButton.forEach((button) => {
+    button.addEventListener('click', (e) => {
+      e.preventDefault();
+      deleteStreamer(button.dataset['id']);
+    });
+  });
+}
+if (formAddNews) {
+  formAddNews.addEventListener('submit', (e) => {
+    e.preventDefault();
+    // sama aja buat multipar/form-data
+    const form = new FormData();
+    // const name = document.getElementById('name').value;
+    // const shortName = document.getElementById('shortName').value;
+
+    form.append('photo', document.getElementById('photo').files[0]);
+    createNews(form);
+  });
+}
+if (deleteNewsButton) {
+  deleteNewsButton.forEach((button) => {
+    button.addEventListener('click', (e) => {
+      e.preventDefault();
+      deleteNews(button.dataset['id']);
     });
   });
 }

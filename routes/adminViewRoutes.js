@@ -22,4 +22,7 @@ router.get('/start', viewController.start);
 router.post('/start-now', scheduleController.start);
 router.get('/deleteSchedule', scheduleController.deleteAll);
 
+router.get('/streamer', viewController.manageStreamer);
+router.get('/news', viewController.manageNews);
+
 module.exports = router;

@@ -2,6 +2,8 @@ const axios = require('axios');
 const Player = require('../models/playerModel');
 const Schedule = require('../models/scheduleModels');
 const Team = require('../models/teamModel');
+const News = require('../models/newsModel');
+const Streamer = require('../models/streamerModel');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 
@@ -12,10 +14,14 @@ exports.getOverview = catchAsync(async (req, res) => {
       'host'
     )}/api/v1/teams?sort=-poin,-selisihMatch,-selisihGame,-accPoin,-winMatch,-winGame,name&limit=5`,
   });
+  const news = await News.find();
+  const streamers = await Streamer.find();
   const schedules = await Schedule.find({ finish: false });
   res.status(200).render('main/overview', {
     teams: resp.data.data.docs,
     schedules,
+    news,
+    streamers,
   });
 });
 
