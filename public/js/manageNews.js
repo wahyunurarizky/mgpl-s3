@@ -21,7 +21,7 @@ export const createNews = async (data) => {
 
 export const deleteNews = async (id) => {
   try {
-    const url = `/api/v1/news /${id}`;
+    const url = `/api/v1/news/${id}`;
 
     await axios({
       method: 'delete',

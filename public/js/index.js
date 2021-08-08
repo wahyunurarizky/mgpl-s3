@@ -148,38 +148,19 @@ if (formUpdateResult) {
       document.getElementById('mvp2').value,
     ];
 
-    const formR = new FormData();
     // const name = document.getElementById('name').value;
     // const shortName = document.getElementById('shortName').value;
 
-    formR.append('win', winner);
-    formR.append('lose', loser);
-    formR.append('score', document.getElementById('score').value);
-    formR.append(
-      'poinTimWin',
-      document.getElementById('totalWinTimMenang').value
-    );
-    formR.append(
-      'poinTimLose',
-      document.getElementById('totalWinTimKalah').value
-    );
-    formR.append('mvp[]', mvp[0]);
-    formR.append('mvp[]', mvp[1]);
-    // formR.append(
-    //   'screenshoots',
-    //   document.getElementById('screenshoots').files[0]
-    // );
-    // formR.append(
-    //   'screenshoots',
-    //   document.getElementById('screenshoots').files[1]
-    // );
-    // formR.append(
-    //   'screenshoots[]',
-    //   document.getElementById('screenshoots').files[1]
-    // );
-    formR.append('finish', true);
-    // console.log(document.getElementById('nameU').value);
-    // console.log(document.getElementById('logo').files[0]);
+    const formR = {
+      win: winner,
+      lose: loser,
+      score: document.getElementById('score').value,
+      poinTimWin: document.getElementById('totalWinTimMenang').value,
+      poinTimLose: document.getElementById('totalWinTimKalah').value,
+      mvp,
+      finish: true,
+    };
+
     updateResult(formR, document.getElementById('resultId').value);
   });
 }
