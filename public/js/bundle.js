@@ -23596,7 +23596,7 @@ var deleteNews = /*#__PURE__*/function () {
         switch (_context2.prev = _context2.next) {
           case 0:
             _context2.prev = 0;
-            url = "/api/v1/news/".concat(id);
+            url = "/api/v1/news /".concat(id);
             _context2.next = 4;
             return (0, _axios.default)({
               method: 'delete',
@@ -23904,7 +23904,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65300" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64444" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
