@@ -4,6 +4,7 @@ const Schedule = require('../models/scheduleModels');
 const catchAsync = require('../utils/catchAsync');
 const factory = require('./handleFactory');
 const Team = require('../models/teamModel');
+const AppError = require('../utils/appError');
 
 exports.getAllSchedules = factory.getAll(Schedule);
 exports.getOneSchedule = factory.getOne(Schedule, [
@@ -95,11 +96,7 @@ exports.start = catchAsync(async (req, res, next) => {
       });
     }
 
-    if (day === 9) {
-      startDate += 86400000 * 7;
-    } else {
-      startDate += 86400000 * 2;
-    }
+    startDate += 86400000 * 2;
     day++;
     // if (i % 2 != 0) {
     //   if (i == 1) {
