@@ -6,7 +6,7 @@ block content
       .row.text-center.my-4
         .col
           h1=`${team.shortName} - ${team.name}`
-          img(src=`/img/teams/${team.logo}` width="300")
+          img(src=team.logo_url width="300")
       .row.bg-dark.py-4.text-white
         .col-md-6.text-center   
           h2 About Us
@@ -21,11 +21,12 @@ block content
           h2.text-center Key Player 
       .row.justify-content-center
         .col-6.col-md-3
-          .card.text-center
-            img.card-img-top(src=`/img/players/${team.keyPlayer.photo}` alt='...')
-            .card-body
-              h4.card-title=team.keyPlayer.nick
-              h4=`${team.keyPlayer.mvp} kali mvp`
+          if(team.keyPlayer)
+            .card.text-center
+              img.card-img-top(src=`/img/players/${team.keyPlayer.photo}` alt='...')
+              .card-body
+                h4.card-title=team.keyPlayer.nick
+                h4=`${team.keyPlayer.mvp} kali mvp`
       
       .row.pt-4
         .col 

@@ -37,7 +37,7 @@ block content
                   th(scope='row')= `${i+1}`
                   td 
                     a(href=`/teams/${team.slug}`)
-                      img(src=`/img/teams/${team.logo}` width='50')
+                      img(src=team.logo_url width='50')
                   td=team.shortName
                   td.d-none.d-lg-table-cell
                     a.text-decoration-none.text-dark(href=`/teams/${team.slug}`)=team.name
@@ -57,7 +57,7 @@ block content
                 -for(let i=0;i<5;i++)
                   tr
                     td
-                      img.img-fluid(src=`/img/teams/${schedules[i].t1.logo}` width='50' height='50' alt='')
+                      img.img-fluid(src=schedules[i].t1.logo_url width='50' height='50' alt='')
                     td  
                       a.text-decoration-none.text-dark(href=`/teams/${schedules[i].t1.slug}`)=schedules[i].t1.shortName
                     td
@@ -65,8 +65,8 @@ block content
                     td
                       a.text-decoration-none.text-dark(href=`/teams/${schedules[i].t2.slug}`)=schedules[i].t2.shortName
                     td
-                      img.img-fluid(src=`/img/teams/${schedules[i].t2.logo}` width='50' height='50' alt='')
-                    td=`${schedules[i].startDate.toLocaleString('id', {hour: 'numeric', minute: 'numeric'})} WIB`
+                      img.img-fluid(src=schedules[i].t2.logo_url width='50' height='50' alt='')
+                    td=`${schedules[0].startDate.toLocaleString('id', {hour: 'numeric', minute: 'numeric'})} WIB`
           a(href='/schedule') klik untuk melihat jadwal dan hasil selengkapnya
         hr.my-4
       .row.text-center.align-items-center.mt-4

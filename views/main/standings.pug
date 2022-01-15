@@ -31,7 +31,7 @@ block content
                   th(scope='row')= `${i+1}`
                   td 
                     a(href=`/teams/${team.slug}`)
-                      img(src=`/img/teams/${team.logo}` width='50')
+                      img(src=team.logo_url width='50')
                   td=team.shortName
                   td.d-none.d-lg-table-cell
                     a(href=`/teams/${team.slug}`)=team.name

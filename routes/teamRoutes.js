@@ -22,8 +22,8 @@ router
   .get(teamControllers.getOneTeam)
   .patch(
     authController.protect,
-    teamControllers.uploadTeamLogo,
-    teamControllers.resizeTeamLogo,
+    teamControllers.uploadTeamImages,
+    teamControllers.resizeTeamImages,
     teamControllers.updateTeam
   )
   .delete(authController.protect, teamControllers.deleteTeam);

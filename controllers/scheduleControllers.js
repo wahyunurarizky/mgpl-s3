@@ -73,7 +73,7 @@ exports.start = catchAsync(async (req, res, next) => {
   let day = 1;
   let startDate = start;
   for (let i = 1; i < teams.length; i++) {
-    if (new Date(startDate).getDay() == 0) startDate += 86400000;
+    if (new Date(startDate).getDay() == 1) startDate += 86400000;
 
     await Schedule.create({
       day,

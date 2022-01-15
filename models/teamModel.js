@@ -16,6 +16,11 @@ const teamSchema = mongoose.Schema(
       type: String,
       default: 'defaultLogo.png',
     },
+    logo_url: {
+      type: String,
+      default: process.env.DEFAULT_IMAGE,
+    },
+    logo_id: String,
     description: {
       type: String,
     },
