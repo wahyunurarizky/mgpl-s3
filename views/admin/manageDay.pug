@@ -1,0 +1,20 @@
+extends base
+
+block content
+  main.col-md-9.ms-sm-auto.col-lg-10.px-md-4
+    .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pt-3.pb-2.mb-3.border-bottom
+      h1.h2 Day Management
+    .row
+      .col.text-center
+        table.table.table-striped.align-middle
+          thead
+            tr
+              th(scope='col') minggu ke
+              th(scope='col') tanggal
+          tbody
+            each s in schedules
+              tr
+                th(scope='row')=s.day
+                //- td=`${moment('2000-01-01')}`
+                td
+                  input.startDateInput(type="datetime-local", value=`${moment(s.startDate).format('YYYY-MM-DD[T]hh:mm')}`, data-day=s.day)

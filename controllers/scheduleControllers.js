@@ -69,17 +69,13 @@ exports.resizeScreenshoots = catchAsync(async (req, res, next) => {
 exports.start = catchAsync(async (req, res, next) => {
   await Schedule.deleteMany();
   const teams = await Team.find();
-  const start = new Date(req.body.dateStart).getTime();
   let day = 1;
-  let startDate = start;
   for (let i = 1; i < teams.length; i++) {
-    if (new Date(startDate).getDay() == 1) startDate += 86400000;
-
     await Schedule.create({
       day,
       t1: teams[0].id,
       t2: teams[i].id,
-      startDate,
+      head: true,
     });
     for (let j = 1; j < teams.length / 2; j++) {
       let a = teams.length - j - 1 + i;
@@ -92,11 +88,9 @@ exports.start = catchAsync(async (req, res, next) => {
         day,
         t1: teams[a].id,
         t2: teams[b].id,
-        startDate,
       });
     }
 
-    startDate += 86400000 * 2;
     day++;
     // if (i % 2 != 0) {
     //   if (i == 1) {
@@ -118,4 +112,16 @@ exports.deleteAll = catchAsync(async (req, res, next) => {
   await Schedule.deleteMany();
 
   res.redirect('/panel-admin/manage-schedule');
+});
+
+exports.updateStartDate = catchAsync(async (req, res, next) => {
+  const s = await Schedule.updateMany(
+    { day: req.params.day },
+    { startDate: new Date(req.body.startDate) }
+  );
+  res.status(200).json({
+    status: 'success',
+    results: s.length,
+    data: null,
+  });
 });

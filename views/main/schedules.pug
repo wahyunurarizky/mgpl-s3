@@ -36,7 +36,7 @@ block content
                   if schedule.finish
                     tr
                       td
-                        img.img-fluid(src=`/img/teams/${schedule.t1.logo}` width='50' height='50' alt='')
+                        img.img-fluid(src=schedule.t1.logo_url width='50' height='50' alt='')
                       td  
                         a.text-decoration-none.text-dark(href=`/teams/${schedule.t1.slug}`)=schedule.t1.shortName
                       if (schedule.lose == schedule.t1.id)
@@ -51,7 +51,7 @@ block content
                       td
                         a.text-decoration-none.text-dark(href=`/teams/${schedule.t2.slug}`)=schedule.t2.shortName
                       td
-                        img.img-fluid(src=`/img/teams/${schedule.t2.logo}` width='50' height='50' alt='')
+                        img.img-fluid(src=schedule.t2.logo_url width='50' height='50' alt='')
                       td 
                         // Button trigger modal
                         a.btn-result-detail.text-primary(href='#' data-bs-toggle='modal' data-bs-target='#modalDetailResult' data-id=`${schedule.id}`)
@@ -59,7 +59,7 @@ block content
                   else
                     tr
                       td
-                        img.img-fluid(src=`/img/teams/${schedule.t1.logo}` width='50' height='50' alt='')
+                        img.img-fluid(src=schedule.t1.logo_url width='50' height='50' alt='')
                       td  
                         a.text-decoration-none.text-dark(href=`/teams/${schedule.t1.slug}`)=schedule.t1.shortName
                       
@@ -69,7 +69,7 @@ block content
                       td
                         a.text-decoration-none.text-dark(href=`/teams/${schedule.t2.slug}`)=schedule.t2.shortName
                       td
-                        img.img-fluid(src=`/img/teams/${schedule.t2.logo}` width='50' height='50' alt='')
+                        img.img-fluid(src=schedule.t2.logo_url width='50' height='50' alt='')
                       td
 
           

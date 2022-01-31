@@ -1,5 +1,4 @@
 const express = require('express');
-const Team = require('../models/teamModel');
 // const authController = require('../controllers/aut/hControllers');
 const viewController = require('../controllers/mainViewControllers');
 

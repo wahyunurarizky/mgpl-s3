@@ -29,7 +29,6 @@ exports.updateOne = (Model) =>
       new: true,
       runValidators: true,
     });
-    console.log('hjgfdhjkhgfhjkg', req.body);
     if (!updatedDoc) {
       return next(new AppError('no docs found with that id', 404));
     }
@@ -89,7 +88,7 @@ exports.getAll = (Model, popOptions) =>
     // const docs = await features.query.explain();
 
     res.status(200).json({
-      status: 'succcess',
+      status: 'success',
       results: docs.length,
       data: {
         docs,

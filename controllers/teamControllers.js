@@ -41,7 +41,9 @@ exports.createTeam = catchAsync(async (req, res, next) => {
     'name',
     'shortName',
     'achievement',
-    'description'
+    'description',
+    'logo_id',
+    'logo_url'
   );
 
   if (req.file) filteredBody.logo = req.file.filename;
@@ -108,6 +110,8 @@ exports.resizeTeamLogo = catchAsync(async (req, res, next) => {
   next();
 });
 
+// asdasdas
+
 const uploadMem = multer({
   storage: multer.memoryStorage({}),
   fileFilter: multerFilter,
@@ -139,7 +143,6 @@ exports.resizeTeamImages = catchAsync(async (req, res, next) => {
       .toBuffer();
 
     const logoCloud = await streamUpload(logoSharp);
-    console.log(logoCloud);
 
     req.body.logo_id = logoCloud.public_id;
     req.body.logo_url = logoCloud.secure_url;

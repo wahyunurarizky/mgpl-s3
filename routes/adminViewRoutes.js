@@ -17,6 +17,7 @@ router.get('/', (req, res) => {
 
 router.get('/manage-teams', viewController.manageTeams);
 router.get('/manage-teams/:id', viewController.managePlayers);
+router.get('/manage-day', viewController.manageDay);
 router.get('/manage-schedule', viewController.manageSchedules);
 router.get('/start', viewController.start);
 router.post('/start-now', scheduleController.start);

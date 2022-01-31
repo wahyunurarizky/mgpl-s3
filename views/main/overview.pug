@@ -3,7 +3,7 @@ extends base
 block jumbotron  
   header
     .jumbotron
-      h1.mb-3 MGPL S3 - Divisi 1
+      h1.mb-3 MGPL - Divisi 1
       p.mb-3 show us the best team in magic chess
       ul.jumbo-list
         li.mb-3
@@ -84,10 +84,10 @@ block content
               each newz,i in streamers
                 if(i == 0)
                   .carousel-item.active
-                    img.d-block.w-100(src=`/img/streamer/${newz.photo}`, alt='...')
+                    img.d-block.w-100(src=`${newz.photo_url}`, alt='...')
                 else 
                   .carousel-item
-                    img.d-block.w-100(src=`/img/streamer/${newz.photo}`, alt='...')
+                    img.d-block.w-100(src=`${newz.photo_url}`, alt='...')
             button.carousel-control-prev(type='button', data-bs-target='#carouselExampleIndicators', data-bs-slide='prev')
               span.carousel-control-prev-icon(aria-hidden='true')
               span.visually-hidden Previous
@@ -96,7 +96,7 @@ block content
               span.visually-hidden Next
           a(href='#') Hubungi kami jika ingin bergabung menjadi streamer
         .col-md-6
-          h2 News Update 
+          h2 Sponsor 
           #carouselExampleIndicators2.carousel.slide(data-bs-ride='carousel')
             .carousel-indicators
               each newz,i in news
@@ -109,10 +109,10 @@ block content
               each newz,i in news
                 if(i == 0)
                   .carousel-item.active
-                    img.d-block.w-100(src=`/img/news/${newz.photo}`, alt='...')
+                    img.d-block.w-100(src=`${newz.photo_url}`, alt='...')
                 else 
                   .carousel-item
-                    img.d-block.w-100(src=`/img/news/${newz.photo}`, alt='...')
+                    img.d-block.w-100(src=`${newz.photo_url}`, alt='...')
 
             button.carousel-control-prev(type='button', data-bs-target='#carouselExampleIndicators2', data-bs-slide='prev')
               span.carousel-control-prev-icon(aria-hidden='true')

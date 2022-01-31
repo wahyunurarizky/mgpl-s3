@@ -11,7 +11,14 @@ const scheduleSchema = mongoose.Schema({
     type: mongoose.Schema.ObjectId,
     ref: 'Team',
   },
-  startDate: Date,
+  startDate: {
+    type: Date,
+    default: Date.now(),
+  },
+  head: {
+    type: Boolean,
+    default: false,
+  },
   win: {
     type: mongoose.Schema.ObjectId,
     ref: 'Team',
@@ -144,9 +151,6 @@ scheduleSchema.statics.calcWin = async function () {
     },
   ]);
 
-  console.log('statWins', statsWin);
-  console.log('statLLose', statsLose);
-
   if (statsLose.length > 0) {
     statsLose.forEach(async (s) => {
       // console.log('wkwkwk');
@@ -211,7 +215,6 @@ scheduleSchema.pre(/^findOneAnd/, async function (next) {
 });
 scheduleSchema.post(/^findOneAnd/, async function () {
   const doc = await this.findOne();
-  console.log(doc);
   await doc.constructor.calcWin();
   await doc.constructor.calcMvp();
   await Team.calcSelisih();

@@ -1,4 +1,3 @@
-const Player = require('../models/playerModel');
 const Schedule = require('../models/scheduleModels');
 const Team = require('../models/teamModel');
 const Streamer = require('../models/streamerModel');
@@ -48,6 +47,14 @@ exports.manageSchedules = catchAsync(async (req, res, next) => {
     });
   res.status(200).render('admin/manageSchedule', {
     title: 'manage Schedule',
+    schedules,
+  });
+});
+
+exports.manageDay = catchAsync(async (req, res, next) => {
+  const schedules = await Schedule.find({ head: true });
+  res.status(200).render('admin/manageDay', {
+    title: 'manage Day',
     schedules,
   });
 });

@@ -74,3 +74,22 @@ export const updateResult = async (data, resultId) => {
     alert(err.response.data.message);
   }
 };
+
+export const changeDay = async (day, value) => {
+  try {
+    const url = `/api/v1/schedules/day/${day}`;
+    const res = await axios({
+      method: 'PATCH',
+      url,
+      data: {
+        startDate: value,
+      },
+    });
+    if (res.data.status === 'success') {
+      alert('successfull');
+      location.reload();
+    }
+  } catch (err) {
+    alert(err.response.data.message);
+  }
+};

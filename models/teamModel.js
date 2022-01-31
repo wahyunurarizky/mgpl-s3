@@ -121,7 +121,6 @@ teamSchema.pre('save', function (next) {
 });
 
 teamSchema.statics.calcSelisih = async function () {
-  console.log('wkwkwk');
   await this.find();
   const stats = await this.aggregate([
     {

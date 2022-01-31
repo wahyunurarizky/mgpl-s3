@@ -1,10 +1,8 @@
 const axios = require('axios');
-const Player = require('../models/playerModel');
 const Schedule = require('../models/scheduleModels');
 const Team = require('../models/teamModel');
 const News = require('../models/newsModel');
 const Streamer = require('../models/streamerModel');
-const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 
 exports.getOverview = catchAsync(async (req, res) => {
@@ -43,7 +41,6 @@ exports.getScheduleView = catchAsync(async (req, res, next) => {
   };
   // let filter = {};
   const schedules = await Schedule.find(filt);
-  console.log(schedules.length);
   res.status(200).render('main/schedules', {
     schedules,
     active: req.query.day,

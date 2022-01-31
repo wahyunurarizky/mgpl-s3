@@ -12,8 +12,8 @@ router
   .get(teamControllers.getAllTeams)
   .post(
     authController.protect,
-    teamControllers.uploadTeamLogo,
-    teamControllers.resizeTeamLogo,
+    teamControllers.uploadTeamImages,
+    teamControllers.resizeTeamImages,
     teamControllers.createTeam
   );
 

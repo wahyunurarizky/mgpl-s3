@@ -5,7 +5,7 @@ import 'bootstrap';
 import { login, logout } from './login';
 import { createTeam, deleteTeam, updateTeam, fillForm } from './manageTeam';
 import { createPlayer, deletePlayer } from './managePlayers';
-import { addResult, updateResult } from './manageResults';
+import { addResult, updateResult, changeDay } from './manageResults';
 import { detailPlayer } from './detailPlayer';
 import { resultDetail } from './resultDetail';
 import { createStreamer, deleteStreamer } from './manageStreamer';
@@ -27,6 +27,7 @@ const deleteStreamerButton = document.querySelectorAll('.delete-streamer');
 const formAddNews = document.querySelector('.form--addNews');
 const deleteNewsButton = document.querySelectorAll('.delete-news');
 const btnLogout = document.querySelector('.btn-logout');
+const startDateInput = document.querySelectorAll('.startDateInput');
 
 if (loginForm) {
   loginForm.addEventListener('submit', (e) => {
@@ -190,6 +191,8 @@ if (formAddStreamer) {
     // const name = document.getElementById('name').value;
     // const shortName = document.getElementById('shortName').value;
 
+    console.log(document.getElementById('photo').files[0]);
+
     form.append('photo', document.getElementById('photo').files[0]);
     createStreamer(form);
   });
@@ -225,4 +228,13 @@ if (deleteNewsButton) {
 
 if (btnLogout) {
   btnLogout.addEventListener('click', logout);
+}
+
+if (startDateInput) {
+  startDateInput.forEach((s) => {
+    s.addEventListener('change', (e) => {
+      // console.log(e.target.getAttribute('data-day'));
+      changeDay(e.target.getAttribute('data-day'), e.target.value);
+    });
+  });
 }

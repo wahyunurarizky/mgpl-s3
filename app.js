@@ -22,6 +22,8 @@ const scheduleRoutes = require('./routes/scheduleRoutes');
 
 const app = express();
 
+app.locals.moment = require('moment');
+
 if (process.env.NODE_ENV === 'production') {
   app.use((req, res, next) => {
     if (req.header('x-forwarded-proto') !== 'https')
