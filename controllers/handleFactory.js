@@ -42,6 +42,7 @@ exports.updateOne = (Model) =>
 
 exports.createOne = (Model, ...fields) =>
   catchAsync(async (req, res, next) => {
+    console.log('creating');
     const filteredBody = filterObj(req.body, fields);
     if (req.file) filteredBody.photo = req.file.filename;
     const doc = await Model.create(filteredBody);

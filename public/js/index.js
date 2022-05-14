@@ -10,6 +10,7 @@ import { detailPlayer } from './detailPlayer';
 import { resultDetail } from './resultDetail';
 import { createStreamer, deleteStreamer } from './manageStreamer';
 import { createNews, deleteNews } from './manageNews';
+import { createSponsor, deleteSponsor } from './manageSponsors';
 
 const loginForm = document.querySelector('.form-login');
 const formAddTeam = document.querySelector('.form--addTeam');
@@ -26,6 +27,8 @@ const formAddStreamer = document.querySelector('.form--addStreamer');
 const deleteStreamerButton = document.querySelectorAll('.delete-streamer');
 const formAddNews = document.querySelector('.form--addNews');
 const deleteNewsButton = document.querySelectorAll('.delete-news');
+const formAddSponsor = document.querySelector('.form--addSponsor');
+const deleteSponsorButton = document.querySelectorAll('.delete-sponsor');
 const btnLogout = document.querySelector('.btn-logout');
 const startDateInput = document.querySelectorAll('.startDateInput');
 
@@ -222,6 +225,28 @@ if (deleteNewsButton) {
     button.addEventListener('click', (e) => {
       e.preventDefault();
       deleteNews(button.dataset['id']);
+    });
+  });
+}
+
+// sponsor as news
+if (formAddSponsor) {
+  formAddSponsor.addEventListener('submit', (e) => {
+    e.preventDefault();
+    // sama aja buat multipar/form-data
+    const form = new FormData();
+    // const name = document.getElementById('name').value;
+    // const shortName = document.getElementById('shortName').value;
+
+    form.append('photo', document.getElementById('photo').files[0]);
+    createSponsor(form);
+  });
+}
+if (deleteSponsorButton) {
+  deleteSponsorButton.forEach((button) => {
+    button.addEventListener('click', (e) => {
+      e.preventDefault();
+      deleteSponsor(button.dataset['id']);
     });
   });
 }

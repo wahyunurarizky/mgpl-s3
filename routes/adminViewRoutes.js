@@ -25,5 +25,6 @@ router.get('/deleteSchedule', scheduleController.deleteAll);
 
 router.get('/streamer', viewController.manageStreamer);
 router.get('/news', viewController.manageNews);
+router.get('/sponsor', viewController.manageSponsors);
 
 module.exports = router;

@@ -69,6 +69,22 @@ exports.resizeScreenshoots = catchAsync(async (req, res, next) => {
 exports.start = catchAsync(async (req, res, next) => {
   await Schedule.deleteMany();
   const teams = await Team.find();
+
+  await Team.updateMany(
+    {},
+    {
+      $set: {
+        winGame: 0,
+        loseGame: 0,
+        winMatch: 0,
+        loseMatch: 0,
+        poin: 0,
+        played: 0,
+        accPoin: 0,
+      },
+    }
+  );
+
   let day = 1;
   for (let i = 1; i < teams.length; i++) {
     await Schedule.create({

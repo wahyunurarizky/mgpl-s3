@@ -3,6 +3,7 @@ const Team = require('../models/teamModel');
 const Streamer = require('../models/streamerModel');
 const catchAsync = require('../utils/catchAsync');
 const News = require('../models/newsModel');
+const Sponsor = require('../models/sponsorModel');
 
 exports.manageStreamer = catchAsync(async (req, res, next) => {
   const streamers = await Streamer.find();
@@ -18,6 +19,14 @@ exports.manageNews = catchAsync(async (req, res, next) => {
   res.status(200).render('admin/manageNews.pug', {
     title: 'manage teams',
     news,
+  });
+});
+exports.manageSponsors = catchAsync(async (req, res, next) => {
+  const sponsors = await Sponsor.find();
+
+  res.status(200).render('admin/manageSponsor.pug', {
+    title: 'manage teams',
+    sponsors,
   });
 });
 exports.manageTeams = catchAsync(async (req, res, next) => {
